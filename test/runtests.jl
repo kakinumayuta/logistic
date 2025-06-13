@@ -57,4 +57,27 @@ end
     end
 end
 
+# バネの運動のテスト
+@testset "Spring motion" begin
+    # バネ定数
+    k = 1.0
+    # バネの力: F = -kx
+    F(x, t) = -k * x
 
+    tmax = 2π  # 1周期分
+    x0 = 1.0   # 初期位置
+    a0 = 0.0   # 初期速度
+    h = 1e-4   # 時間ステップ
+
+    x_final, a_final = perform_timeprop(F, tmax, x0, a0, h)
+
+    # 理論値: x = x0 * cos(ωt), ここでω = √k
+    # 理論値: v = -x0 * ω * sin(ωt)
+    ω = √k
+    expected_x = x0 * cos(ω * tmax)
+    expected_a = -x0 * ω * sin(ω * tmax)
+
+    # バネの運動は数値誤差が蓄積しやすいため、許容誤差を大きくする
+    @test isapprox(x_final, expected_x, atol=1e-2)
+    @test isapprox(a_final, expected_a, atol=1e-2)
+end
