@@ -69,7 +69,7 @@ end
     a0 = 0.0   # 初期速度
     h = 1e-4   # 時間ステップ
 
-    x_final, a_final = perform_timeprop(F, tmax, x0, a0, h)
+    x_final, a_final = lg.Fset(F, tmax, x0, a0, h)
 
     # 理論値: x = x0 * cos(ωt), ここでω = √k
     # 理論値: v = -x0 * ω * sin(ωt)
