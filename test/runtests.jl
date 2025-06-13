@@ -16,7 +16,6 @@ import logistic as lg
         h = tmax / num
 
         x, a = lg.Fset(F, tmax, x0, a0, h)
-        @show x, a
         @test abs(x - 5.0 / 2.0 * i^2) < 1e-3
         @test abs(a - 5.0 * i) < 1e-3
     end
@@ -33,7 +32,6 @@ end
         h = tmax / num
 
         x, a = lg.Fset(F, tmax, x0, a0, h)
-        @show x, a
         @test abs(x - 1.0 / 2.0 * i^3) < 1e-3
         @test abs(a - 3.0 / 2.0 * i^2) < 1e-3
     end
@@ -51,7 +49,6 @@ end
         h = tmax / num
 
         x, a = lg.Fset(F, tmax, x0, a0, h)
-        @show x, a
         @test abs(x - (1 / 24 * tmax^4 - 2 * tmax + 1)) < 1e-3
         @test abs(a - (1 / 6 * tmax^3 - 2)) < 1e-3
     end
