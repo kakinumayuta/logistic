@@ -1,5 +1,4 @@
 using Test
-import Revise
 
 import logistic as lg
 
